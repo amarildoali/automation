@@ -20,6 +20,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains:annotations:26.0.1")
 
+    testImplementation(kotlin("test"))
     testImplementation(platform("org.junit:junit-bom:5.10.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
@@ -31,7 +32,7 @@ tasks.test {
 tasks.jar {
     manifest {
         attributes["Class-Path"] = configurations.runtimeClasspath.get().joinToString(" ") { it.name }
-        attributes["Main-Class"] = "com.amarildo.Main"
+        attributes["Main-Class"] = "com.amarildo.AutomationMain"
     }
 }
 kotlin {
