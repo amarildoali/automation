@@ -102,7 +102,12 @@ class TxtzExtractor {
                 BufferedWriter(FileWriter(backupFile)).use { writer ->
                     reader.lineSequence().forEach { line ->
                         // Update image references replacing "images" with the new folder name
-                        val updatedLine = pattern.replace(line, "]($newImagesFolderName/$1)")
+                        val updatedLine =
+                            pattern
+                                .replace(line, "]($newImagesFolderName/$1)")
+                                .replace("\\(", "(") // remove '\' before curly
+                                .replace("\\)", ")")
+                                .replace("Figur", "figur") // lowercase Figura 1.XX
                         writer.write(updatedLine)
                         writer.newLine()
                     }
