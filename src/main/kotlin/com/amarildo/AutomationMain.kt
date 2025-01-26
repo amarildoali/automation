@@ -1,8 +1,14 @@
 package com.amarildo
 
-import org.apache.commons.cli.*
 import java.nio.file.Path
 import kotlin.system.exitProcess
+import org.apache.commons.cli.CommandLine
+import org.apache.commons.cli.CommandLineParser
+import org.apache.commons.cli.DefaultParser
+import org.apache.commons.cli.HelpFormatter
+import org.apache.commons.cli.Option
+import org.apache.commons.cli.Options
+import org.apache.commons.cli.ParseException
 
 fun main(args: Array<String>) {
     val options = Options()
@@ -10,7 +16,7 @@ fun main(args: Array<String>) {
     // options definition
     val scriptOption =
         Option("s", "script", true, "Script to use in code").apply {
-            isRequired = true // `script` is mandatori
+            isRequired = true // `script` is mandatory
         }
     val fileOption =
         Option("f", "file", true, "Absolute path of the file to pass as argument").apply {
